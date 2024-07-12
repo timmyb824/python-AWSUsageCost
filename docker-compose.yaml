@@ -1,0 +1,20 @@
+---
+services:
+  scripts:
+    container_name: aws_usage_cost
+    # image: aws_usage_cost
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NTFY_TOPIC=${NTFY_TOPIC}
+      - NTFY_ACCESS_TOKEN=${NTFY_ACCESS_TOKEN}
+      - GOTIFY_HOST=${GOTIFY_HOST}
+      - GOTIFY_TOKEN_ADHOC_SCRIPTS=${GOTIFY_TOKEN_ADHOC_SCRIPTS}
+      - HEALTHCHECKS_URL_AWS_USAGE_COST=${HEALTHCHECKS_URL_AWS_USAGE_COST}
+      - DISCORD_WEBHOOK_URL=${DISCORD_WEBHOOK_URL}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - THRESHOLD=5
+      - INTERVAL_SCHEDULE=1 minute
+    network_mode: host
